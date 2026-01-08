@@ -1,0 +1,144 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #121212;
+  color: #e0e0e0;
+  font-family: 'Noto Sans TC', sans-serif;
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: auto;
+  line-height: 1.6;
+}
+
+label {
+  display: inline-block;
+  width: 150px;
+  margin: 10px 0;
+  vertical-align: middle;
+}
+
+input, select {
+  padding: 10px;
+  margin: 10px 0;
+  width: 160px;
+  border: 1px solid #2a2a2a;
+  border-radius: 6px;
+  background-color: #1c1c1c;
+  color: #f0f0f0;
+  font-size: 1rem;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+input:focus, select:focus {
+  background-color: #2a2a2a;
+  border-color: #bb86fc;
+  outline: none;
+}
+
+button {
+  padding: 12px 24px;
+  margin: 20px 0 0;
+  font-size: 1rem;
+  background-color: #2d2d2d;
+  color: #e0e0e0;
+  border: 1px solid #444;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s, border-color 0.3s;
+}
+
+button:hover {
+  background-color: #3b3b3b;
+  border-color: #bb86fc;
+  transform: scale(1.03);
+}
+
+.main-layout {
+  display: flex;
+  gap: 20px;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+
+.column {
+  background-color: #1a1a1a;
+  padding: 20px;
+  border-radius: 10px;
+  flex: 1;
+  min-width: 280px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  border: 1px solid #2a2a2a;
+}
+
+.column h3 {
+  color: #bb86fc;
+  margin-top: 0;
+  font-size: 1.1rem;
+}
+
+#statistics, #output {
+  white-space: pre-wrap;
+  font-size: 0.95rem;
+  color: #cccccc;
+}
+
+/* 深色主題 - 樣式切換器 */
+#styleSwitcher {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #1e1e2f;
+  padding: 8px 12px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  font-family: 'Noto Sans TC', sans-serif;
+  color: #bb86fc;
+  z-index: 1000;
+  user-select: none;
+
+  /* 新增flex排版 */
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+#styleSwitcher {
+  display: flex;
+  align-items: center;     /* 垂直置中 */
+  justify-content: center; /* 整體水平置中 */
+  gap: 12px;               /* 增加一點間距，看起來不會太擠 */
+}
+
+#styleSwitcher label {
+  margin: 0;
+  font-weight: 600;
+  font-size: 0.9rem;
+
+  /* 讓 label 寬度固定，避免寬度跳動 */
+  display: inline-block;
+  width: 90px; /* 依字數調整，確保 label 寬度固定 */
+  text-align: right; /* 靠右對齊文字，靠近 select */
+}
+
+#styleSwitcher select {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: none;
+  background-color: #2c2c2c;
+  color: #eee;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  min-width: 150px; /* 讓 select 固定寬度 */
+}
+
+#styleSwitcher select:hover,
+#styleSwitcher select:focus {
+  background-color: #3a3a3a;
+  outline: none;
+}
+
