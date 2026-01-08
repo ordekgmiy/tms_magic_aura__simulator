@@ -118,9 +118,9 @@ function simulate() {
 
   // 顯示結果，等效魔攻統計放最上面
   document.getElementById("statistics").innerText =
-    `🔥【成功成品 等效魔攻 統計】🔥\n` +
-    `平均：${outputStats.avg}\n` +
-    `中位數：${outputStats.mid}\n` +
+    `【達成目標等效魔攻】\n` +
+    `平均：${outputStats.avg}魔攻\n` +
+    `中位數：${outputStats.mid}魔攻\n` +
     `標準差：${outputStats.std}\n` +
     //`90%：${outputStats.p90}\n` +
     //`99%：${outputStats.p99}\n\n` +
@@ -128,14 +128,14 @@ function simulate() {
     //`成功次數：${successCountTarget}\n` +
     //`總嘗試次數：${successAttempts.reduce((a, b) => a + b, 0)}\n\n` +
 
-    `\n【每次成功花費嘗試次數】\n` +
-    `平均：${attemptStats.avg}\n` +
-    `中位數：${attemptStats.mid}\n` +
+    `\n【達成目標嘗試次數】\n` +
+    `平均：${attemptStats.avg}次\n` +
+    `中位數：${attemptStats.mid}次\n` +
     `標準差：${attemptStats.std}\n` +
     percentileLines.join("\n");
 
   document.getElementById("output").innerText =
-    `成功的前 50 組模擬結果：\n\n` + (logLines.length > 0 ? logLines.join('\n\n') : "無成功案例");
+    `達成目標前 50 組模擬結果：\n\n` + (logLines.length > 0 ? logLines.join('\n\n') : "無成功案例");
 }
 
 // 按鈕綁定事件
