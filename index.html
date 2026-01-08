@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <title>魔法靈氣模擬器</title>
+  <!-- 用來動態切換主題 -->
+  <link id="themeStylesheet" rel="stylesheet" href="style-dark.css" />
+  <style>
+    body {
+      font-family: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h2 {
+      margin-top: 0;
+    }
+
+    /* 右上角切換按鈕 */
+    #themeToggleBtn {
+      position: fixed;
+      top: 15px;
+      right: 15px;
+      z-index: 1000;
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      color: inherit;
+      line-height: 1;
+      padding: 0;
+      margin: 0;
+    }
+
+    .main-layout {
+      display: flex;
+      gap: 20px;
+      margin-top: 40px; /* 避開右上角按鈕 */
+      flex-wrap: wrap;
+    }
+
+    .column-left {
+      width: 200px; /* 左欄固定寬度 */
+    }
+
+    .column-middle, .column-right {
+      flex: 1;
+    }
+
+    /* 統計區 & 模擬結果區 */
+    #statistics, #output {
+      font-family: 'Noto Sans Mono CJK', 'Microsoft JhengHei', monospace;
+      font-weight: 600; /* ← 加粗 */
+      padding: 10px;
+      border-radius: 6px;
+      white-space: pre-wrap;
+      word-break: break-word;
+      max-height: 600px;
+      overflow-y: auto;
+    }
+
+    label, input, select, button {
+      display: block;
+      margin-bottom: -10px;
+      font-family: inherit;
+      font-size: 1rem;
+    }
+
+    input, select {
+      width: 160px;
+    }
+
+    button {
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h2>魔法靈氣模擬器</h2>
+
+  <!-- 右上角切換主題 -->
+  <button id="themeToggleBtn" title="切換主題">🌙</button>
+
+  <div class="main-layout">
+    <!-- 左欄 -->
+    <div class="column column-left">
+      <label>目標等效魔攻：</label>
+      <input type="number" id="targetMa" value="5"><br>
+      <label>1魔攻等效INT：</label>
+      <input type="number" id="maToInt" value="1.5"><br>
+      <label>1魔攻等效全屬：</label>
+      <input type="number" id="maToAll" value="1.65"><br>
+      <label>模擬件數：</label>
+      <input type="number" id="simCount" value="1000"><br>
+      <label>潛能等級：</label>
+      <select id="potentialType">
+        <option value="special">特殊潛能</option>
+        <option value="rare">稀有潛能</option>
+        <option value="epic">罕見潛能</option>
+        <option value="legend">傳說潛能</option>
+      </select><br>
+      <button id="startSimBtn">開始模擬</button>
+    </div>
+
+    <!-- 中欄 -->
+    <div class="column column-middle">
+      <h3>統計結果</h3>
+      <div id="statistics"></div>
+    </div>
+
+    <!-- 右欄 -->
+    <div class="column column-right">
+      <h3>模擬結果</h3>
+      <div id="output"></div>
+    </div>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="simulate.js"></script>
+
+  <script>
+    const themeBtn = document.getElementById('themeToggleBtn');
+    const themeLink = document.getElementById('themeStylesheet');
+
+    // 初始化主題
+    let currentTheme = localStorage.getItem('selectedStyle') || 'dark';
+    themeLink.href = currentTheme === 'dark' ? 'style-dark.css' : 'style-light.css';
+    themeBtn.textContent = currentTheme === 'dark' ? '🌙' : '☀️';
+
+    // 點擊按鈕切換主題
+    themeBtn.addEventListener('click', () => {
+      if (themeLink.href.includes('dark')) {
+        themeLink.href = 'style-light.css';
+        themeBtn.textContent = '☀️';
+        localStorage.setItem('selectedStyle', 'light');
+      } else {
+        themeLink.href = 'style-dark.css';
+        themeBtn.textContent = '🌙';
+        localStorage.setItem('selectedStyle', 'dark');
+      }
+    });
+  </script>
+</body>
+</html>
